@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import locale
-locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
+try:
+    locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
+except:
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+    
 import pandas as pd
 master_file=pd.read_excel('master.xlsx')
 app = Flask(__name__)

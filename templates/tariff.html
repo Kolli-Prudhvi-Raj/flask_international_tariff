@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+
+{% block table %}
+<table>
+    <caption>Destination: --- {{destination1}} <br><br>Weight: --- {{weight}} Grams<br><br></caption>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Tariff Exluding GST</th>
+            <th>GST Amount</th>
+            <th>Total Tariff</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AIR PARCEL</td>
+            <td>{{air_tar}}</td>
+            <td>{{air_gst}}</td>
+            <td>{{air_tar_total}}</td>
+        </tr>
+        <tr>
+            <td>EMS Marchendise</td>
+            <td>{{ems_tar}}</td>
+            <td>{{ems_gst}}</td>
+            <td>{{ems_tar_total}}</td>
+        </tr>
+        <tr>
+            <td>ITPS</td>
+            <td>{{itps_tar}}</td>
+            <td>{{itps_gst}}</td>
+            <td>{{itps_tar_total}}</td>
+        </tr>
+        <tr>
+            <td>Registered Letter</td>
+            <td>{{rl_tar}}</td>
+            <td>{{rl_gst}}</td>
+            <td>{{rl_tar_total}}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock table %}

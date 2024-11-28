@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Tariff</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 20px;
+        }
+    
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+    
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+    
+        td {
+            background-color: #fff;
+            color: #333;
+        }
+    
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+    
+        tr:hover td {
+            background-color: #d1ffd6;
+            cursor: pointer;
+        }
+    
+        caption {
+            caption-side: top;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0f0000;
 
+        }
+        container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            background-color: #dbb1b1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(125, 7, 7);
+        }
+        input, select{
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 150px;
+        }
+        button {
+            background-color: #055507; /* Green background */
+            border: none; /* Remove default border */
+            color: rgb(221, 171, 171); /* White text */
+            padding: 8px 20px; /* Padding inside the button */
+            text-align: center; /* Center text */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Inline-block for spacing */
+            font-size: 16px; /* Font size */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+        }
+        main-head {
+            color: rgb(224, 38, 38);
+            text-transform: uppercase;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 36px; /* Font size */
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            background-color: #dbb1b1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(125, 7, 7);
+
+        }
+    </style>
+</head>
+<body>
+    <main-head>Indiapost International Tariff</main-head>
+    <container>
+    <form action="/tariff" method="POST">
+        <label for="weight">Select Destination:</label>
+        <select id="destination" name="destination" required>
+            <option value="" disabled selected>Select an option</option>
+            {% for destination in destinations %}
+            <option value="{{destination}}">{{destination}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="weight">Weight in Grams:</label>
+        <input type="number" id="weight" name="weight" autocomplete="on" min=1 required>
+        <button type="submit">Submit</button>
+    </form>
+    </container>
+
+{% block table %}
+{% endblock table %}
+</body>
+</html>

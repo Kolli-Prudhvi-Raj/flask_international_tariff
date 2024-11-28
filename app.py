@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-
+import locale
+locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
 import pandas as pd
 master_file=pd.read_excel('master.xlsx')
 app = Flask(__name__)
@@ -36,6 +37,10 @@ def air(weight,destination):
                 air_tar=(first_air_price)+((1+((weight-250)//250))*part_air_price)
         air_gst=air_tar*18/100
         air_tar_total=air_tar+air_gst
+        air_tar='₹ '+locale.format_string("%0.0f", round(air_tar), grouping=True)
+        air_gst='₹ '+locale.format_string("%0.0f", air_gst, grouping=True)
+        air_tar_total='₹ '+locale.format_string("%0.0f", air_tar_total, grouping=True)
+
     list=[air_tar,air_gst,air_tar_total]
     return list
 
@@ -67,6 +72,9 @@ def ems(weight,destination):
                 ems_tar=(first_ems_price)+((1+((weight-250)//250))*part_ems_price)
         ems_gst=ems_tar*18/100
         ems_tar_total=ems_tar+ems_gst
+        ems_tar='₹ '+locale.format_string("%0.0f", round(ems_tar), grouping=True)
+        ems_gst='₹ '+locale.format_string("%0.0f", ems_gst, grouping=True)
+        ems_tar_total='₹ '+locale.format_string("%0.0f", ems_tar_total, grouping=True)
     list=[ems_tar,ems_gst,ems_tar_total]
     return list
 
@@ -98,6 +106,9 @@ def itps(weight,destination):
                 itps_tar=int(first_itps_price)+((1+((weight-50)//50))*part_itps_price)
         itps_gst=itps_tar*18/100
         itps_tar_total=itps_tar+itps_gst
+        itps_tar='₹ '+locale.format_string("%0.0f", round(itps_tar), grouping=True)
+        itps_gst='₹ '+locale.format_string("%0.0f", itps_gst, grouping=True)
+        itps_tar_total='₹ '+locale.format_string("%0.0f", itps_tar_total, grouping=True)
     list=[itps_tar,itps_gst,itps_tar_total]
     return list
 
@@ -129,6 +140,9 @@ def rl(weight,destination):
                 rl_tar=(first_rl_price)+((1+((weight-20)//20))*part_rl_price)
         rl_gst=rl_tar*18/100
         rl_tar_total=rl_tar+rl_gst
+        rl_tar='₹ '+locale.format_string("%0.0f", round(rl_tar), grouping=True)
+        rl_gst='₹ '+locale.format_string("%0.0f", rl_gst, grouping=True)
+        rl_tar_total='₹ '+locale.format_string("%0.0f", rl_tar_total, grouping=True)
     # list=[f'₹{rl_tar}',f'₹{rl_gst}',f'₹{rl_tar_total}']
     list=[rl_tar,rl_gst,rl_tar_total]
     return list
